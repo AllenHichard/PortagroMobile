@@ -1,16 +1,7 @@
-import React from 'react';
-import {StatusBar, YellowBox} from "react-native";
-import Routes from  "./src/routes";
+import axios from "axios";
 
-YellowBox.ignoreWarnings([
-  'Unrecognized WebSocket' 
-])
+const api = axios.create({
+  baseURL: "http://portalagronegocio.com.br/"
+})
 
-export default function App() {
-  return (
-    <>
-      <StatusBar barStyle="light-content" backgroundColor="#7D40E7"/>
-      <Routes />
-    </>
-  );
-}
+export default api;
