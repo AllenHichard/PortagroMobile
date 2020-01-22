@@ -5,8 +5,8 @@ import api from "../services/api";
 function Main(){
     console.log("Main Executou")
     async function loadDevs(){
-        const response = await api.get("/api/municipios");
-        console.log(response);
+        //const response = await api.get("/api/municipios");
+        //console.log(response);
     }
     loadDevs();
     return(
