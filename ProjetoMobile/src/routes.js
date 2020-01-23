@@ -1,23 +1,23 @@
 import React from 'react';
-import { View, Text,Image } from 'react-native';
+import { View, Text,Image , StyleSheet, Button} from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Main from "./pages/Main";
-import logo from "../assets/icon.png"
+import logo from "../assets/logo.png"
 
 
 class LogoTitle extends React.Component {
     render() {
       return (
-        <>
+        <View style={styles.Escopo}>
             <Image
                 source={logo}
-                style={{ width: 30, height: 30 }}
+                style={styles.Logo}
             />
-            <Text style={{color:"#FFF"}}>
+            <Text style={styles.Title}>
                 Portal do Agronegócio
             </Text>
-        </>
+        </View>
       );
     }
   }
@@ -29,6 +29,13 @@ const Routes = createAppContainer(
             screen: Main,
             navigationOptions:{
                 headerTitle: () => <LogoTitle />,
+                headerRight: () => (
+                    <Button
+                      onPress={() => alert('This is a button!')}
+                      title="Info"
+                      color="#fff"
+                    />
+                  ),
             },
         },
         }, {
@@ -43,9 +50,37 @@ const Routes = createAppContainer(
         })
 );
 
+
+const styles = StyleSheet.create({
+    Escopo: {
+        flexDirection: "row",
+    },
+    
+    Logo: {
+        width: 30,
+        height: 30,
+        alignContent: "center",
+        justifyContent: "center",
+        paddingRight: 10, 
+    },
+
+    Title:{
+        color:"#FFF",
+        alignContent: "center",
+        justifyContent: "center",
+        paddingLeft: 10,
+        fontFamily: "Roboto",
+        fontSize: 20,
+
+    },
+
+});
+
 export default Routes;
 
-
+/**
+ * 
+ */
 
 
 
