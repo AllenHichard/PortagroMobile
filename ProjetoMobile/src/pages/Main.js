@@ -1,20 +1,108 @@
 import React from "react";
-import {View, Text} from "react-native";
-import api from "../services/api";
+import {View, Text, StyleSheet, Image, Button} from "react-native";
+import { createStackNavigator } from 'react-navigation-stack';
+import logo from "../svgfiles/logo.png";
+import DetailsScreen from "./DetailsScreen";
 
-function Main(){
-    console.log("Main Executou")
-    async function loadDevs(){
-        //const response = await api.get("/api/municipios");
-        //console.log(response);
-    }
-    loadDevs();
-    return(
-        <View>
-            <Text>
-                Hello World
+
+class LogoTitle extends React.Component {
+    render() {
+      return (
+        <View style={styles.Escopo}>
+            <Image
+                source={logo}
+                style={styles.Logo}
+            />
+            <Text style={styles.Title}>
+                Portal do Agronegócio
             </Text>
         </View>
-    )  
+      );
+    }
+  }
+
+
+const Placeholder = ({ text }) => (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>{text}</Text>
+    </View>
+);
+
+class Main extends React.Component {
+    static navigationOptions = {
+      tabBarLabel: 'Home!',
+    };
+  
+    render() {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>Home Screen</Text>
+            <Button
+                title="Go to Details"
+                onPress={() => this.props.navigation.navigate('Details', {nome: "Usuário"})}
+            />
+            <Placeholder text="A!" />
+        </View> 
+        );
+    }
 }
-export default Main;    
+
+let Home = createStackNavigator({
+    Main:{
+        screen: Main,
+        navigationOptions:{
+            headerTitle: () => <LogoTitle />,
+        },
+    }, Details : {
+        screen: DetailsScreen,
+    }
+    
+    },{
+        defaultNavigationOptions:{
+            headerTitleAlign: "center",
+            headerBackTitleVisible: false,
+            headerTintColor: "#FFF",
+            headerStyle:{
+                backgroundColor: '#000', // apenas para o container superior, sem o texto
+            },
+        },
+    },
+    {
+        initialRouteName: 'Main',
+    }
+)   
+
+
+
+
+    const styles = StyleSheet.create({
+        Escopo: {
+            flexDirection: "row",
+        },
+        
+        Logo: {
+            width: 30,
+            height: 30,
+            alignContent: "center",
+            justifyContent: "center",
+            paddingRight: 10, 
+        },
+    
+        Title:{
+            color:"#FFF",
+            alignContent: "center",
+            justifyContent: "center",
+            paddingLeft: 10,
+            fontFamily: "Roboto",
+            fontSize: 20,
+    
+        },
+    });
+
+
+
+
+
+
+export default Home;    
+

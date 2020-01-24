@@ -1,44 +1,43 @@
 import React from 'react';
 import { View, Text,Image , StyleSheet, Button} from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import Main from "./pages/Main";
-import logo from "../assets/logo.png"
 import { createDrawerNavigator } from 'react-navigation-drawer';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import Home from "./pages/Main"
+import Principal from "./pages/Teste"
+import logo from "./svgfiles/logo.png"
 
-const Placeholder = ({ text }) => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>{text}</Text>
-  </View>
+
+  
+
+export default createAppContainer(createDrawerNavigator({
+    Home: {
+        screen: Home,
+        navigationOptions:{
+            title: "Página Inicial",
+            drawerIcon: ({ tintColor }) => (
+                <Image
+                source={logo}
+                style={[styles.icon, { tintColor: tintColor }]}
+                />
+            ),
+        }
+    },
+    Principal: {
+        screen: Principal,
+        navigationOptions:{
+            title: "Página Secundária"
+        }
+    }, 
+},)
+
+
 );
+  
 
-class A extends React.Component {
-  static navigationOptions = {
-    tabBarLabel: 'Home!',
-  };
+const styles = StyleSheet.create({
+    icon: {
+        width: 24,
+        height: 24,
+      },
 
-  render() {
-    return <Placeholder text="A!" />;
-  }
-}
-
-class B extends React.Component {
-    static navigationOptions = {
-      tabBarLabel: 'Settings!',
-    };
-  
-    render() {
-      return <Placeholder text="B!" />;
-    }
-  }
-  
-  let HomeStack = createStackNavigator({ A });
-  
-  let SettingsStack = createStackNavigator({ B });
-  
-  export default createAppContainer(createDrawerNavigator({
-    HomeStack,
-    SettingsStack,
-  }));
-  
+});
