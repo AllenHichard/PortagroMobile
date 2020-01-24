@@ -4,111 +4,41 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Main from "./pages/Main";
 import logo from "../assets/logo.png"
+import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
+const Placeholder = ({ text }) => (
+  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Text>{text}</Text>
+  </View>
+);
 
-class LogoTitle extends React.Component {
+class A extends React.Component {
+  static navigationOptions = {
+    tabBarLabel: 'Home!',
+  };
+
+  render() {
+    return <Placeholder text="A!" />;
+  }
+}
+
+class B extends React.Component {
+    static navigationOptions = {
+      tabBarLabel: 'Settings!',
+    };
+  
     render() {
-      return (
-        <View style={styles.Escopo}>
-            <Image
-                source={logo}
-                style={styles.Logo}
-            />
-            <Text style={styles.Title}>
-                Portal do Agronegócio
-            </Text>
-        </View>
-      );
+      return <Placeholder text="B!" />;
     }
   }
   
-
-const Routes = createAppContainer(
-    createStackNavigator({
-        Main:{
-            screen: Main,
-            navigationOptions:{
-                headerTitle: () => <LogoTitle />,
-                headerLeft: () => (
-                    <Button
-                      onPress={() => alert('This is a button!')}
-                      title="Info"
-                      color="#fff"
-                    />
-                  ),
-            },
-        },
-        }, {
-            defaultNavigationOptions:{
-                headerTitleAlign: "center",
-                headerBackTitleVisible: false,
-                headerTintColor: "#FFF",
-                headerStyle:{
-                    backgroundColor: '#000', // apenas para o container superior, sem o texto
-                },
-            },
-        })
-);
-
-
-const styles = StyleSheet.create({
-    Escopo: {
-        flexDirection: "row",
-    },
-    
-    Logo: {
-        width: 30,
-        height: 30,
-        alignContent: "center",
-        justifyContent: "center",
-        paddingRight: 10, 
-    },
-
-    Title:{
-        color:"#FFF",
-        alignContent: "center",
-        justifyContent: "center",
-        paddingLeft: 10,
-        fontFamily: "Roboto",
-        fontSize: 20,
-
-    },
-
-});
-
-export default Routes;
-
-/**
- * 
- */
-
-
-
-
-
-
-/*const Routes = createAppContainer(
-    createStackNavigator({
-        Main:{
-            screen: Main,
-            navigationOptions:{
-                title: "DevRadar"
-            },
-        },
-        Profile:{
-            screen: Profile,
-            navigationOptions:{
-                title: "Perfil no Github"
-            },
-        },
-    },{
-        defaultNavigationOptions:{
-            headerTitleAlign: "center",
-            headerBackTitleVisible: false,
-            headerTintColor: "#FFF",
-            headerStyle:{
-                backgroundColor: '#7D40E7', // apenas para o container superior, sem o texto
-            },
-        },
-    }) 
-);*/
+  let HomeStack = createStackNavigator({ A });
+  
+  let SettingsStack = createStackNavigator({ B });
+  
+  export default createAppContainer(createDrawerNavigator({
+    HomeStack,
+    SettingsStack,
+  }));
+  
