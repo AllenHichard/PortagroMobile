@@ -17,4 +17,4 @@ function Main(){
         </View>
     )  
 }
-export default Main;
+export default Main;    
