@@ -18,7 +18,7 @@ const stylesHome = StyleSheet.create({
         right: 0,
         top: 0,
         bottom: 0,
-        background: "#FFFFFF",
+        backgroundColor: "#FFFFFF",
     },
     botaoConhecaMaisEComeceAgora:{
         width: 133,
@@ -26,11 +26,14 @@ const stylesHome = StyleSheet.create({
         backgroundColor: "#002F33",
     },
     titulo:{
-        fontSize:24,
+        fontSize:22,
         color: "#FFFFFF",
+        alignContent: "center",
+        justifyContent: "center",
+
     },
     textoIntermediario:{
-        fontSize: 12,
+        fontSize: 15,
         color: "#FFFFFF",
     },
     slogan:{

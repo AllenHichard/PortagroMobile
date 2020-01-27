@@ -1,9 +1,11 @@
 import React from "react";
-import {View, Text, StyleSheet, Image, Button} from "react-native";
+import {View, Text, StyleSheet, Image, Button, TouchableOpacity} from "react-native";
 import { createStackNavigator } from 'react-navigation-stack';
 import logo from "../svgfiles/logo.png";
 import DetailsScreen from "./DetailsScreen";
-
+import HomeBackground from "../utils/Image/home_background.png"
+import {MaterialIcons} from  '@expo/vector-icons'
+import css from "../utils/css/css"
 
 class LogoTitle extends React.Component {
     render() {
@@ -35,15 +37,31 @@ class Main extends React.Component {
   
     render() {
       return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Home Screen</Text>
-            <Button
-                title="Go to Details"
-                onPress={() => this.props.navigation.navigate('Details', {nome: "Usuário"})}
-            />
-            <Placeholder text="A!" />
-        </View> 
-        );
+            <> 
+                <View style={styles.DivTitulo}>
+                    <Text style={css.stylesHome.titulo}>
+                        
+                    </Text>
+                </View>
+                <View style={styles.DivIntermediaria}>
+                    <Text style={css.stylesHome.textoIntermediario}>
+                    
+                    </Text>
+                </View>
+                <Image
+                    source={HomeBackground}
+                    style={styles.BackgroundImage}
+                />
+                <View style={styles.DivButton}>
+                <TouchableOpacity style={styles.Button}>
+                    <Text style={styles.textoButton}>Conheça mais</Text>  
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.Button}>
+                    <Text  style={styles.textoButton}>Comece agora</Text>  
+                </TouchableOpacity>
+                </View>
+            </>
+        )
     }
 }
 
@@ -97,6 +115,65 @@ let Home = createStackNavigator({
             fontSize: 20,
     
         },
+
+        BackgroundImage: {
+            flex: 1,
+        },
+
+        DivTitulo: {
+            position: "absolute",
+            top: 20, // bottom vai pra baixo
+            left: 20,
+            right: 20,
+            zIndex: 5,
+            flexDirection: "row",
+        },
+
+        DivIntermediaria: {
+            position: "absolute",
+            top: "30%", // bottom vai pra baixo
+            left: 20,
+            right: 20,
+            zIndex: 5,
+            
+        },
+        teste: {
+            alignItems: "center",
+            alignContent: "center",
+            justifyContent: "center",
+        },
+
+        DivButton: {
+            position: "absolute",
+            bottom: 20, // bottom vai pra baixo
+            left: 20,
+            right: 20,
+            zIndex: 5,
+            flexDirection: "row",
+        },
+    
+        Button: {
+            flex: 1,
+            height: 50,
+            backgroundColor: "#002F33",
+            borderRadius: 25,
+            justifyContent: "center",
+            alignItems: "center",
+            marginLeft: 15,
+            shadowColor: '#000',
+            shadowOpacity: 0.2,
+            shadowOffset: {
+                width: 4,
+                height: 4,
+            },
+            elevation: 2,
+        },
+
+        textoButton:{
+            color: "#FFF",
+            fontSize: 16
+        }
+
     });
 
 
@@ -106,3 +183,15 @@ let Home = createStackNavigator({
 
 export default Home;    
 
+/*
+<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>Home Screen</Text>
+            <Button
+                title="Go to Details"
+                onPress={() => this.props.navigation.navigate('Details', {nome: "Usuário"})}
+            />
+            <Placeholder text="A!" />
+            
+        </View> 
+        );
+*/
