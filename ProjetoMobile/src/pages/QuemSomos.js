@@ -34,7 +34,15 @@ class QuemSomos extends React.Component {
     render(){
       return(
         <View style={styles.Background}> 
-                
+                <Text style={styles.Title}>
+                    EQUIPE DE SUPERVISÃO, IDEALIZAÇÃO E APOIO INSTITUCIONAL
+                </Text>
+                <Text style={styles.SubTitle}>
+                  O Governo do Estado da Bahia, por iniciativa da Secretaria da Agricultura, Pecuária, Irrigação, Pesca e Aquicultura - SEAGRI, 
+                  em colaboração com a Secretaria de Ciência Tecnologia e Inovação - SECTI idealizou o Projeto Sistema de Informações Agropecuárias 
+                  do Estado da Bahia, elaborado e desenvolvido pela PPGM/UEFS. O projeto congrega uma equipe colaborativa que reúne Secretarias de Estado, 
+                  Universidade e Empresa de Tecnologia.
+                </Text>
         </View>
       )
     }
@@ -54,23 +62,13 @@ class QuemSomos extends React.Component {
 
 
 const styles = StyleSheet.create({
-  Escopo: {
-      flexDirection: "row",
-  },
   
-  Logo: {
-      width: 30,
-      height: 30,
-      alignContent: "center",
-      justifyContent: "center",
-      paddingRight: 10, 
-  },
-
   Title:{
-      color:"#FFF",
-      alignContent: "center",
+      alignItems: "center",
       justifyContent: "center",
+      paddingTop: 10,
       paddingLeft: 10,
+      paddingRight: 10,
       fontFamily: "Roboto",
       fontSize: 20,
 
@@ -81,59 +79,18 @@ const styles = StyleSheet.create({
       backgroundColor: "#C4C4C4",
   },
 
-  DivTitulo: {
-      position: "absolute",
-      top: 20, // bottom vai pra baixo
-      left: 20,
-      right: 20,
-      zIndex: 5,
-      flexDirection: "row",
-  },
+  SubTitle:{
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    fontFamily: "Roboto",
+    fontSize: 14,
 
-  DivIntermediaria: {
-      position: "absolute",
-      top: "30%", // bottom vai pra baixo
-      left: 20,
-      right: 20,
-      zIndex: 5,
-      
-  },
-  teste: {
-      alignItems: "center",
-      alignContent: "center",
-      justifyContent: "center",
-  },
-
-  DivButton: {
-      position: "absolute",
-      bottom: 20, // bottom vai pra baixo
-      left: 20,
-      right: 20,
-      zIndex: 5,
-      flexDirection: "row",
-  },
-
-  Button: {
-      flex: 1,
-      height: 50,
-      backgroundColor: "#002F33",
-      borderRadius: 25,
-      justifyContent: "center",
-      alignItems: "center",
-      marginLeft: 15,
-      shadowColor: '#000',
-      shadowOpacity: 0.2,
-      shadowOffset: {
-          width: 4,
-          height: 4,
-      },
-      elevation: 2,
-  },
-
-  textoButton:{
-      color: "#FFF",
-      fontSize: 16
-  }
+},
+  
 
 });
 
