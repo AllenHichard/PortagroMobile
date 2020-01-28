@@ -4,6 +4,8 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 
 
+
+
 const Placeholder = ({ text }) => (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>{text}</Text>

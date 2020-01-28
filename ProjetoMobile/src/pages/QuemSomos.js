@@ -1,5 +1,5 @@
-import React from "react";
-import {View, Text, StyleSheet} from "react-native";
+import React, {useState} from "react";
+import {View, Text, StyleSheet, Image} from "react-native";
 import { createStackNavigator } from 'react-navigation-stack';
 import css from "../utils/css/css"
 
@@ -25,13 +25,24 @@ render() {
 </Text>
 </View>
 */
+function carregarEquipe() {
+  const [Images, setImages] = useState([]);
+  for(let x=1; x<4; x++){
+    setImages([...Images, <Image source={require(`../utils/pessoas/${x}.jpg`)} />])
+  }
+  console.log(Images)
+}
+
 
 
 class QuemSomos extends React.Component {
+  
+    
     static navigationOptions = {
       tabBarLabel: 'Settings!',
     };
     render(){
+      carregarEquipe();
       return(
         <View style={styles.Background}> 
                 <Text style={styles.Title}>
@@ -88,8 +99,15 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     fontFamily: "Roboto",
     fontSize: 14,
+  },
 
-},
+  Componente: {
+    width: 30,
+    height: 30,
+    alignContent: "center",
+    justifyContent: "center",
+    paddingRight: 10, 
+  }
   
 
 });
