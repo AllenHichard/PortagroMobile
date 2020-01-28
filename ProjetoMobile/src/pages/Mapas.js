@@ -10,7 +10,7 @@ const Placeholder = ({ text }) => (
     </View>
 );
 
-class Teste extends React.Component {
+class Mapa extends React.Component {
     static navigationOptions = {
       tabBarLabel: 'Settings!',
     };
@@ -20,6 +20,13 @@ class Teste extends React.Component {
     }
   }
 
-let Principal = createStackNavigator({ Teste });
+  let Principal = createStackNavigator({ 
+    Mapa:{
+      screen: Mapa,
+      navigationOptions:{
+          title: "Mapa",
+      },
+  },
+});
 export default Principal;    
 
