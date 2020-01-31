@@ -33,8 +33,9 @@
     "react-navigation-tabs": "^2.7.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
     "babel-preset-expo": "~8.0.0",
-    "@babel/core": "^7.0.0"
+    "babel-preset-react-native": "^2.1.0"
   },
   "private": true
 }
