@@ -1,6 +1,7 @@
 import React from "react";
 import {View, Text} from "react-native";
 import { createStackNavigator } from 'react-navigation-stack';
+import MapView from "react-native-maps";
 
 
 
@@ -16,7 +17,16 @@ class Mapa extends React.Component {
     };
   
     render() {
-      return <Placeholder text="B!" />;
+      return (
+        <MapView
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        />
+      );
     }
   }
 
