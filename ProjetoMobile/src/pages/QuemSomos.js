@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {View, Text, StyleSheet, Image, SafeAreaView, ScrollView} from "react-native";
+import {View, Text, StyleSheet, Image, SafeAreaView, ScrollView, FlatList} from "react-native";
 import { createStackNavigator } from 'react-navigation-stack';
 import css from "../utils/css/css"
 
@@ -25,41 +25,53 @@ render() {
 </Text>
 </View>
 */
-async function carregarEquipe() {
+function carregarEquipe() {
   //const [Images, setImages] = useState([]);
-  const Images = []
-  Images.push((<Image source={require('../utils/pessoas/'+1+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+2+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+3+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+4+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+5+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+6+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+7+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+8+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+9+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+10+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+11+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+12+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+13+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+14+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+15+'.jpg')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+1+'.png')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+2+'.png')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+3+'.png')} />))
-  Images.push((<Image source={require('../utils/pessoas/'+4+'.png')} />))
-  console.log(Images)
+  
+  
 }
 
 
 
 class QuemSomos extends React.Component {
-  
+    //Imagens = carregarEquipe();
     
+
     static navigationOptions = {
       tabBarLabel: 'Settings!',
     };
+
+    
+
+    
+
     render(){
-      carregarEquipe();
+      const Imagens = {
+        data: [
+          { id: 0, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+1+'.jpg')} /> },
+          { id: 1, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+7+'.jpg')} /> },
+          { id: 2, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+3+'.jpg')} /> },
+          { id: 3, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+4+'.jpg')} /> },
+          { id: 4, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+5+'.jpg')} /> },
+          { id: 5, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+6+'.jpg')} /> },
+          { id: 6, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+2+'.jpg')} /> },
+          { id: 7, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+8+'.jpg')} /> },
+          { id: 8, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+9+'.jpg')} /> },
+          { id: 9, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+10+'.jpg')} /> },
+          { id: 10, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+11+'.jpg')} /> },
+          { id: 11, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+12+'.jpg')} /> },
+          { id: 12, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+13+'.jpg')} /> },
+          { id: 13, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+14+'.jpg')} /> },
+          { id: 14, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+15+'.jpg')} /> },
+          { id: 15, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+1+'.png')} /> },
+          { id: 16, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+2+'.png')} /> },
+          { id: 17, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+3+'.png')} /> },
+          { id: 18, imagem: <Image style={styles.avatar} source={require('../utils/pessoas/'+4+'.png')} /> },
+         
+        ]
+      };
+      const temp = {}
+
       return(
         <>
            <SafeAreaView style={styles.container}>
@@ -76,10 +88,50 @@ class QuemSomos extends React.Component {
                           </Text>
                   </View>
                   <View style={styles.Background}>
-                        <Image source={require('../utils/pessoas/'+1+'.jpg')}></Image> 
-                        <Image source={require('../utils/pessoas/'+2+'.jpg')}></Image>
-                        <Image source={require('../utils/pessoas/'+3+'.jpg')}></Image>   
+                      {Imagens.data.map( figura =>{
+                         if(figura.id % 5 == 0 && figura.id+4 < Imagens.data.length){
+                            return(
+                              <>
+                              <View style={styles.par}>
+                                    <View style={styles.avatarEsquerdo}>
+                                         {figura.imagem}
+                                    </View>
+                                    <View  style={styles.centro}>
+                                          {Imagens.data[figura.id+1].imagem}
+                                    </View>
+                                </View>
+                              <View style={styles.par}>
+                                    <View style={styles.avatarEsquerdo}>
+                                         {Imagens.data[figura.id+2].imagem}
+                                    </View>
+                                    <View  style={styles.centro}>
+                                          {Imagens.data[figura.id+3].imagem}
+                                    </View>
+                                    <View  style={styles.avatarDireito}>
+                                          {Imagens.data[figura.id+4].imagem}
+                                    </View>
+                                </View>
+                              </>
+                            ) 
+                          } else if (figura.id+1 == Imagens.data.length ) {
+                            return(
+
+                              <View style={styles.par}>
+                                {figura.imagem}
+                              </View>
+                            )} 
+                      })}
+                     </View>
+                     <View style={styles.Background}> 
+                          <Text style={styles.tituloRodape}>
+                              EQUIPE DE COORDENAÇÃO E DESENVOLVIMENTO
+                          </Text>
+                          <Text style={styles.subTituloRodape}>
+                                O Programa de Pós-Graduação em Modelagem em Ciências da Terra e do Ambiente da UEFS desenvolve o Projeto em interação 
+                                com o ecossistema local de inovação articulado pelo Núcleo de Inovação Tecnológica da UEFS.
+                          </Text>
                   </View>
+
               </ScrollView>
           </SafeAreaView>
         </>
@@ -97,7 +149,16 @@ class QuemSomos extends React.Component {
           title: "Quem Somos?",
       },
   },
-});
+},{
+  defaultNavigationOptions:{
+      headerTitleAlign: "center",
+      headerBackTitleVisible: false,
+      headerTintColor: "#FFF",
+      headerStyle:{
+          backgroundColor: '#000', // apenas para o container superior, sem o texto
+      },
+  },
+},);
 
 
 
@@ -106,10 +167,38 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollView: {
-    backgroundColor: 'pink',
-    marginHorizontal: 20,
+    backgroundColor: '#C4C4C4',
   },
 
+  avatar: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: '#FFF',
+  },
+
+  avatarEsquerdo: {
+    paddingRight: 20,
+
+  },
+  avatarDireito: {
+    paddingLeft: 20,
+    
+  },
+
+  alone: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  par: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 15,
+  },
 
   Title:{
       alignItems: "center",
@@ -152,3 +241,33 @@ const styles = StyleSheet.create({
 
 export default Principal;    
 
+/*
+ <View style={styles.alone}>
+                          <Image style={styles.avatar} source={require('../utils/pessoas/'+1+'.jpg')}></Image> 
+                      </View> 
+                      
+
+
+
+const Images = {}
+  Images.push((<Image source={require('../utils/pessoas/'+1+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+2+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+3+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+4+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+5+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+6+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+7+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+8+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+9+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+10+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+11+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+12+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+13+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+14+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+15+'.jpg')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+1+'.png')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+2+'.png')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+3+'.png')} />))
+  Images.push((<Image source={require('../utils/pessoas/'+4+'.png')} />))
+  return Images
+*/

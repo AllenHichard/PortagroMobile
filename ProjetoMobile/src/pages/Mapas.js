@@ -26,7 +26,19 @@ class Mapa extends React.Component {
       navigationOptions:{
           title: "Mapa",
       },
+    },
+    }
+    ,{
+      defaultNavigationOptions:{
+          headerTitleAlign: "center",
+          headerBackTitleVisible: false,
+          headerTintColor: "#FFF",
+          headerStyle:{
+              backgroundColor: '#000', // apenas para o container superior, sem o texto
+          },
+      },
   },
-});
+  
+  );
 export default Principal;    
 
