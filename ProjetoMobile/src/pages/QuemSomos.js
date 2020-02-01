@@ -92,7 +92,7 @@ class QuemSomos extends React.Component {
                          if(figura.id % 5 == 0 && figura.id+4 < Imagens.data.length){
                             return(
                               <>
-                              <View style={styles.par}>
+                              <View key={figura.id} style={styles.par}>
                                     <View style={styles.avatarEsquerdo}>
                                          {figura.imagem}
                                     </View>
