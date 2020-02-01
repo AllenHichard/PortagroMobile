@@ -78,7 +78,16 @@ class Contato extends React.Component {
           title: "Contato",
       },
   },
-});
+},{
+  defaultNavigationOptions:{
+      headerTitleAlign: "center",
+      headerBackTitleVisible: false,
+      headerTintColor: "#FFF",
+      headerStyle:{
+          backgroundColor: '#000', // apenas para o container superior, sem o texto
+      },
+  },
+},);
 
 const styles = StyleSheet.create({
   searchForm: {
