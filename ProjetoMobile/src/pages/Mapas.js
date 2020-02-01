@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Tabela from "./Tabela"
 import Grafico from "./Grafico"
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import MapView from "react-native-maps";
 
 
 
@@ -16,7 +17,14 @@ const Placeholder = ({ text }) => (
 class Mapa extends React.Component {
     
     render() {
-      return <Placeholder text="Mapa!" />;
+      return (<MapView style={{flex:1}}
+        initialRegion={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+      />);
     }
   }
 
