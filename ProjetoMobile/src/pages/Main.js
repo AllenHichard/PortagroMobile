@@ -23,6 +23,7 @@ class LogoTitle extends React.Component {
     }
   }
 
+  
 
 const Placeholder = ({ text }) => (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
