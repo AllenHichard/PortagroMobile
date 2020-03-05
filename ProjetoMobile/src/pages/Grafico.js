@@ -1,15 +1,24 @@
-import React from 'react';
-import { Button, Text, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import React from 'react'
+import { AreaChart, Grid } from 'react-native-svg-charts'
+import * as shape from 'd3-shape'
+//https://www.npmjs.com/package/react-native-svg-charts
+//npm install react-native-svg@9.13.3
 
 class Grafico extends React.Component {
     render() {
-      return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text>Graficos!</Text>
-        </View>
-      );
+      const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
+ 
+        return (
+            <AreaChart
+                style={{ height: 200 }}
+                data={ data }
+                contentInset={{ top: 30, bottom: 30 }}
+                curve={ shape.curveNatural }
+                svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
+            >
+                <Grid/>
+            </AreaChart>
+        )
     }
   }
 
