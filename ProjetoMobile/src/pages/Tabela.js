@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { Table, TableWrapper, Row } from 'react-native-table-component';
 
 class Tabela extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tableHead: ['Head', 'Head2', 'Head3', 'Head4', 'Head5', 'Head6', 'Head7', 'Head8', 'Head9'],
-      widthArr: [40, 60, 80, 100, 120, 140, 160, 180, 200]
+      tableHead: ['#', 'Head2', 'Head3', 'Head4', 'Head5'],
+      widthArr: [40, 60, 80, 80, 100]
     }
   }
  
   render() {
     const state = this.state;
     const tableData = [];
-    for (let i = 0; i < 30; i += 1) {
+    for (let i = 0; i < 20; i += 1) {
       const rowData = [];
       for (let j = 0; j < 9; j += 1) {
         rowData.push(`${i}${j}`);
@@ -23,6 +23,10 @@ class Tabela extends Component {
     }
  
     return (
+      <>
+      <View>
+         <Text style={styles.texto}>Leite - Feira de Santana</Text>
+      </View>
       <View style={styles.container}>
         <ScrollView horizontal={true}>
           <View>
@@ -47,6 +51,7 @@ class Tabela extends Component {
           </View>
         </ScrollView>
       </View>
+      </>
     )
   }
 }
@@ -56,7 +61,13 @@ const styles = StyleSheet.create({
   header: { height: 50, backgroundColor: '#537791' },
   text: { textAlign: 'center', fontWeight: '100' },
   dataWrapper: { marginTop: -1 },
-  row: { height: 40, backgroundColor: '#E7E6E1' }
+  row: { height: 40, backgroundColor: '#E7E6E1' },
+    texto:{
+      
+      paddingLeft:90,
+      fontFamily: "Roboto",
+      fontSize: 20,
+    }
 });
 
 export default Tabela;

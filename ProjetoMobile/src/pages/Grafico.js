@@ -1,37 +1,66 @@
 import React from 'react'
-import { AreaChart, Grid, BarChart } from 'react-native-svg-charts'
+import { AreaChart, Grid, BarChart, YAxis, LineChart, XAxis } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
+import { View, Text, StyleSheet } from 'react-native'
 //https://www.npmjs.com/package/react-native-svg-charts
 //npm install react-native-svg@9.13.3
 
 class Grafico extends React.Component {
     render() {
-      const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
-      const fill = 'rgb(134, 65, 244)'
-      const data2   = [ 50, 10, 40, 95, -4, -24, null, 85, undefined, 0, 35, 53, -53, 24, 50, -20, -80 ]
+
+        const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
+
+        const axesSvg = { fontSize: 10, fill: 'grey' };
+        const verticalContentInset = { top: 10, bottom: 10 }
+        const xAxisHeight = 30
+
+        // Layout of an x-axis together with a y-axis is a problem that stems from flexbox.
+        // All react-native-svg-charts components support full flexbox and therefore all
+        // layout problems should be approached with the mindset "how would I layout regular Views with flex in this way".
+        // In order for us to align the axes correctly we must know the height of the x-axis or the width of the x-axis
+        // and then displace the other axis with just as many pixels. Simple but manual.
+
         return (
             <>
-                <AreaChart
-                    style={{ height: 200 }}
-                    data={ data }
-                    contentInset={{ top: 30, bottom: 30 }}
-                    curve={ shape.curveNatural }
-                    svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
-                >
-                    <Grid/>
-                </AreaChart>
-                <BarChart
-                    style={{ height: 200 }}
-                    data={ data2 }
-                    svg={{ fill }}
-                    contentInset={{ top: 30, bottom: 30 }}
-                >
-                    <Grid/>
-                </BarChart>
-
+            <View>
+                <Text style={styles.texto}>Leite - Feira de Santana</Text>
+            </View>
+            <View style={{ height: 200, padding: 20, flexDirection: 'row' }}>
+                <YAxis
+                    data={data}
+                    style={{ marginBottom: xAxisHeight }}
+                    contentInset={verticalContentInset}
+                    svg={axesSvg}
+                />
+                <View style={{ flex: 1, marginLeft: 10 }}>
+                    <LineChart
+                        style={{ flex: 1 }}
+                        data={data}
+                        contentInset={verticalContentInset}
+                        svg={{ stroke: 'rgb(134, 65, 244)' }}
+                    >
+                        <Grid/>
+                    </LineChart>
+                    <XAxis
+                        style={{ marginHorizontal: -10, height: xAxisHeight }}
+                        data={data}
+                        formatLabel={(value, index) => index}
+                        contentInset={{ left: 10, right: 10 }}
+                        svg={axesSvg}
+                    />
+                </View>
+            </View>
             </>
         )
     }
   }
+  const styles = StyleSheet.create({
+      texto:{
+        
+        paddingLeft:90,
+        fontFamily: "Roboto",
+        fontSize: 20,
+      }
+  })
 
   export default Grafico
