@@ -4,12 +4,15 @@ import { createStackNavigator } from 'react-navigation-stack';
 import logo from "../svgfiles/logo.png";
 import DetailsScreen from "./DetailsScreen";
 import HomeBackground from "../utils/Image/home_background.png"
-import {MaterialIcons} from  '@expo/vector-icons'
 import css from "../utils/css/css"
+import MenuBarra from "./components/MenuBarra";
+
+
 
 class LogoTitle extends React.Component {
     render() {
       return (
+        
         <View style={styles.Escopo}>
             <Image
                 source={logo}
@@ -18,6 +21,8 @@ class LogoTitle extends React.Component {
             <Text style={styles.Title}>
                 Portal do Agronegócio
             </Text>
+            
+            
         </View>
       );
     }
@@ -38,17 +43,23 @@ class Main extends React.Component {
   
     render() {
       return (
-            <> 
+            <>  
+            <View>
+                <MenuBarra/>
+            </View>
                 <View style={styles.DivTitulo}>
+                    
                     <Text style={css.stylesHome.titulo}>
                         
                     </Text>
+
                 </View>
                 <View style={styles.DivIntermediaria}>
                     <Text style={css.stylesHome.textoIntermediario}>
                     
                     </Text>
                 </View>
+                
                 <Image
                     source={HomeBackground}
                     style={styles.BackgroundImage}
@@ -94,88 +105,89 @@ let Home = createStackNavigator({
 
 
 
-    const styles = StyleSheet.create({
-        Escopo: {
-            flexDirection: "row",
-        },
+const styles = StyleSheet.create({
+    Escopo: {
+        flexDirection: "row",
+    },
+    
+    Logo: {
+        width: 30,
+        height: 30,
+        alignContent: "center",
+        justifyContent: "center",
+        paddingRight: 10, 
+    },
+
+    Title:{
+        color:"#FFF",
+        alignContent: "center",
+        justifyContent: "center",
+        paddingLeft: 10,
+        fontFamily: "Roboto",
+        fontSize: 20,
+
+    },
+
+    BackgroundImage: {
+        flex: 1,
+    },
+
+    DivTitulo: {
+        position: "absolute",
+        top: 20, // bottom vai pra baixo
+        left: 20,
+        right: 20,
+        zIndex: 5,
+        flexDirection: "row",
+    },
+
+    DivIntermediaria: {
+        position: "absolute",
+        top: "30%", // bottom vai pra baixo
+        left: 20,
+        right: 20,
+        zIndex: 5,
         
-        Logo: {
-            width: 30,
-            height: 30,
-            alignContent: "center",
-            justifyContent: "center",
-            paddingRight: 10, 
-        },
-    
-        Title:{
-            color:"#FFF",
-            alignContent: "center",
-            justifyContent: "center",
-            paddingLeft: 10,
-            fontFamily: "Roboto",
-            fontSize: 20,
-    
-        },
+    },
+    teste: {
+        alignItems: "center",
+        alignContent: "center",
+        justifyContent: "center",
+    },
 
-        BackgroundImage: {
-            flex: 1,
-        },
+    DivButton: {
+        position: "absolute",
+        bottom: 20, // bottom vai pra baixo
+        left: 20,
+        right: 20,
+        zIndex: 5,
+        flexDirection: "row",
+    },
 
-        DivTitulo: {
-            position: "absolute",
-            top: 20, // bottom vai pra baixo
-            left: 20,
-            right: 20,
-            zIndex: 5,
-            flexDirection: "row",
+    Button: {
+        flex: 1,
+        height: 50,
+        backgroundColor: "#002F33",
+        borderRadius: 25,
+        justifyContent: "center",
+        alignItems: "center",
+        marginLeft: 15,
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowOffset: {
+            width: 4,
+            height: 4,
         },
+        elevation: 2,
+    },
 
-        DivIntermediaria: {
-            position: "absolute",
-            top: "30%", // bottom vai pra baixo
-            left: 20,
-            right: 20,
-            zIndex: 5,
-            
-        },
-        teste: {
-            alignItems: "center",
-            alignContent: "center",
-            justifyContent: "center",
-        },
+    textoButton:{
+        color: "#FFF",
+        fontSize: 16
+    },
 
-        DivButton: {
-            position: "absolute",
-            bottom: 20, // bottom vai pra baixo
-            left: 20,
-            right: 20,
-            zIndex: 5,
-            flexDirection: "row",
-        },
-    
-        Button: {
-            flex: 1,
-            height: 50,
-            backgroundColor: "#002F33",
-            borderRadius: 25,
-            justifyContent: "center",
-            alignItems: "center",
-            marginLeft: 15,
-            shadowColor: '#000',
-            shadowOpacity: 0.2,
-            shadowOffset: {
-                width: 4,
-                height: 4,
-            },
-            elevation: 2,
-        },
 
-        textoButton:{
-            color: "#FFF",
-            fontSize: 16
-        }
-
-    });
+});
 
 
 

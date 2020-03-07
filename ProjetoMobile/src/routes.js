@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text,Image , StyleSheet, Button} from 'react-native';
+import { View, Text,Image , StyleSheet, Button, SafeAreaView, ScrollView} from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import Home from "./pages/Main"
@@ -11,7 +11,6 @@ import Contato from "./pages/Contato"
 import logo from "./svgfiles/logo.png"
 
 
-  
 
 export default createAppContainer(createDrawerNavigator({
     Home: {
@@ -23,6 +22,7 @@ export default createAppContainer(createDrawerNavigator({
                 source={logo}
                 style={[styles.icon, { tintColor: tintColor }]}
                 />
+                
             ),
         }
     },
