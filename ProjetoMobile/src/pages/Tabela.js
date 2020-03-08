@@ -6,17 +6,17 @@ class Tabela extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tableHead: ['#', 'Head2', 'Head3', 'Head4', 'Head5'],
-      widthArr: [40, 60, 80, 80, 100]
+      tableHead: ['ID','Tipo', 'Produto', 'Variável', 'Valor', 'Data'],
+      widthArr: [50, 75, 75, 80, 80]
     }
   }
  
   render() {
     const state = this.state;
     const tableData = [];
-    for (let i = 0; i < 20; i += 1) {
+    for (let i = 0; i < 5; i += 1) {
       const rowData = [];
-      for (let j = 0; j < 9; j += 1) {
+      for (let j = 0; j < 5; j += 1) {
         rowData.push(`${i}${j}`);
       }
       tableData.push(rowData);
